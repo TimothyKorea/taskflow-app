@@ -1,0 +1,37 @@
+.container{
+    width:90%;
+    margin:auto;
+}
+
+/* side bar */
+.side-bar{
+    display:none;
+    background-color:rgb(237, 239, 247);
+    width:90%;
+    margin:auto;
+    padding:1em;
+}
+
+
+/* main content */
+.main-content{
+    padding-top:1.5em;
+    display:flex;
+    flex-direction:column;
+    gap:1.5rem;
+}
+
+.main-content__task-entry{
+    display:flex;
+    flex-direction:column;
+    gap:.8rem;
+}
+
+.main-content__input-btn-row{
+    display:flex; 
+    gap:.4rem;
+}
+
+.main-content__date-group{
+    flex:1 1 auto;
+}
