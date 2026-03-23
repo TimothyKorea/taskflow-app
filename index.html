@@ -74,6 +74,8 @@
                 <input class="main-content__task-input" type="text" placeholder="Add a new task..." id="task-name" minlength="3">
             </div>
 
+            <p class="main-content__task-error-msg"></p>
+
             <div class="main-content__input-btn-row">
                 <div class="main-content__date-group">
                     <label for="date" class="sr-only">Pick a date</label>
@@ -81,7 +83,10 @@
                 </div>
                 <button class="main-content__add-btn" type="button">Add</button>
             </div>
-        </form>    
+            <p class="main-content__date-error-msg"></p>
+        </form> 
+        
+        <div class="render-task"></div>
     </main>
 </body>
 </html>

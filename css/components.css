@@ -8,6 +8,58 @@
     margin:0;
 }
 
+/* Active */
+.side-bar.active{
+    position:fixed;
+    top:80px;
+    left:50%;
+    transform:translateX(-50%);
+    display: flex;
+    flex-direction:column;
+    border-radius:23px;
+    width:90%;
+    padding:1.3em;
+    z-index:1000;
+}
+
+.side-bar.active .side-bar__title{
+    color:#6B7280; 
+}
+
+.side-bar.active .side-bar__brand-area{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.side-bar.active .side-bar__filters{
+    padding-top:1em;
+    display:flex;
+    flex-direction:column;
+    gap:.2rem;
+}
+
+.side-bar.active .side-bar__filter-btn{
+    display:flex;
+    align-items:center;
+    gap:.5rem;
+    width:100%;
+    border:none;
+    background:none;
+    padding:.85em .9em;
+    cursor:pointer;
+    border-radius:10px;
+    text-align:left;
+    transition:background-color 0.2s ease;
+}
+
+.side-bar.active .side-bar__filter-btn.active{
+    background:#DCE1F0;
+    font-weight:600;
+}
+
+
+
 
 /* main content */
 .main-content__topbar{
@@ -83,53 +135,19 @@
     cursor:pointer;
 }
 
-
-/* Active */
-.side-bar.active{
-    position:fixed;
-    top:80px;
-    left:50%;
-    transform:translateX(-50%);
-    display: flex;
-    flex-direction:column;
-    border-radius:23px;
-    width:90%;
-    padding:1.3em;
-    z-index:1000;
+.main-content__task-error-msg,
+.main-content__date-error-msg{
+    margin:0;
+    width:fit-content;
+    color:#B91C1C;
+    background-color:#FEE2E2;
+    padding:0.6rem 0.75rem;
+    border-radius:.5rem;
+    font-size:.85rem;
+    user-select:none;
 }
 
-.side-bar.active .side-bar__title{
-    color:#6B7280; 
-}
-
-.side-bar.active .side-bar__brand-area{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-
-.side-bar.active .side-bar__filters{
-    padding-top:1em;
-    display:flex;
-    flex-direction:column;
-    gap:.2rem;
-}
-
-.side-bar.active .side-bar__filter-btn{
-    display:flex;
-    align-items:center;
-    gap:.5rem;
-    width:100%;
-    border:none;
-    background:none;
-    padding:.85em .9em;
-    cursor:pointer;
-    border-radius:10px;
-    text-align:left;
-    transition:background-color 0.2s ease;
-}
-
-.side-bar.active .side-bar__filter-btn.active{
-    background:#DCE1F0;
-    font-weight:600;
+.main-content__task-error-msg:empty,
+.main-content__date-error-msg:empty{
+    display:none;
 }
