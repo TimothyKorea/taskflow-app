@@ -69,6 +69,10 @@
     border-color:#3B82F6;
 }
 
+.main-content__date-input{
+    cursor:pointer;
+}
+
 .main-content__add-btn{
     flex:0 0 100px;
     background-color:#3B82F6;
@@ -77,4 +81,55 @@
     border:none;
     border-radius:8px;
     cursor:pointer;
+}
+
+
+/* Active */
+.side-bar.active{
+    position:fixed;
+    top:80px;
+    left:50%;
+    transform:translateX(-50%);
+    display: flex;
+    flex-direction:column;
+    border-radius:23px;
+    width:90%;
+    padding:1.3em;
+    z-index:1000;
+}
+
+.side-bar.active .side-bar__title{
+    color:#6B7280; 
+}
+
+.side-bar.active .side-bar__brand-area{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.side-bar.active .side-bar__filters{
+    padding-top:1em;
+    display:flex;
+    flex-direction:column;
+    gap:.2rem;
+}
+
+.side-bar.active .side-bar__filter-btn{
+    display:flex;
+    align-items:center;
+    gap:.5rem;
+    width:100%;
+    border:none;
+    background:none;
+    padding:.85em .9em;
+    cursor:pointer;
+    border-radius:10px;
+    text-align:left;
+    transition:background-color 0.2s ease;
+}
+
+.side-bar.active .side-bar__filter-btn.active{
+    background:#DCE1F0;
+    font-weight:600;
 }
