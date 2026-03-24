@@ -12,7 +12,7 @@
 
 /* main content */
 .main-content{
-    padding-top:1.5em;
+    padding:1.5em 0;
     display:flex;
     flex-direction:column;
     gap:1.5rem;
@@ -31,4 +31,39 @@
 
 .main-content__date-group{
     flex:1 1 auto;
+}
+
+.render-task{
+    display:flex;
+    flex-direction:column;
+    gap:.7rem;
+}
+
+.render-task__dflex{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    padding:0.75em 0;
+    border-bottom:1px solid rgba(0,0,0,0.06);
+    gap:.75rem;
+}
+
+.render-task__dflex:last-child{
+    border:none;
+}
+
+.render-task__content{
+    display:flex;
+    gap:.75rem;
+    align-items:flex-start;
+
+}
+
+.render-task__text{
+    display:flex;
+    flex-direction:column;
+    gap:.25rem;
+    flex:1;
+    min-width:0;
+    align-items:flex-start;
 }

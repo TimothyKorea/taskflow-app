@@ -34,7 +34,7 @@ const taskjsErrorMessage = document.querySelector('.main-content__task-error-msg
 const datejsErrorMessage = document.querySelector('.main-content__date-error-msg');
 
 
-const taskLists = [];
+const taskLists = JSON.parse(localStorage.getItem('taskLists')) || [];
 
 addBtn.addEventListener('click', function(){
     if(!taskInput.value.trim()){
@@ -52,11 +52,17 @@ addBtn.addEventListener('click', function(){
         dueDate: dateInput.value
     })
 
+    saveTasks();
+
     taskInput.value = '';
     dateInput.value = '';
 
     render();
 })
+
+function saveTasks(){
+    localStorage.setItem('taskLists',JSON.stringify(taskLists));
+}
 
 
 function render() {
@@ -66,9 +72,20 @@ function render() {
         let eachTask = taskLists[i];
         const {name, dueDate} = eachTask;
         const html = `
-         <p class="render-task__title">${name}</p>
-         <p class="render-task__date">${dueDate}</p>
-         <button class="render-task__delete-btn" onclick="deleteTask(${i})">Delete</button>
+        <div class="render-task__dflex">
+            <div class="render-task__content">
+                <input type="checkbox" class="render-task__checkbox">
+
+                <div class="render-task__text">
+                    <p class="render-task__title">${name}</p>
+                    <p class="render-task__date">${dueDate}</p>
+                </div>
+            </div>
+
+            <button class="render-task__delete-btn" onclick="deleteTask(${i})">
+             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" cursor="pointer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M5 6l1 14h12l1-14"/></svg>
+            </button> 
+        </div>
         `;
         taskListHtml += html;
     }
@@ -78,5 +95,16 @@ function render() {
 
 function deleteTask(index){
     taskLists.splice(index, 1);
+    saveTasks();
     render();
 }
+
+taskInput.addEventListener('input', function(){
+    taskjsErrorMessage.textContent = "";
+})
+
+dateInput.addEventListener('input', function(){
+    datejsErrorMessage.textContent = "";
+})
+
+ render();
