@@ -48,8 +48,9 @@ addBtn.addEventListener('click', function(){
     }
 
     taskLists.push({
-        name : taskInput.value,
-        dueDate: dateInput.value
+        name: taskInput.value,
+        dueDate: dateInput.value,
+        complete: false
     })
 
     saveTasks();
@@ -71,12 +72,26 @@ function render() {
     for(let i = 0; i < taskLists.length; i++) {
         let eachTask = taskLists[i];
         const {name, dueDate} = eachTask;
+
+        let completedClass = '';
+
+        if(eachTask.complete === true) {
+            completedClass = 'render-task__task-completed';
+        }
+
+        // my checkbox state
+        let isChecked = '';
+
+        if(eachTask.complete === true) {
+            isChecked = 'checked';
+        }
+
         const html = `
         <div class="render-task__dflex">
             <div class="render-task__content">
-                <input type="checkbox" class="render-task__checkbox">
+                <input type="checkbox" class="render-task__checkbox" data-index="${i}" ${isChecked}>
 
-                <div class="render-task__text">
+                <div class="render-task__text ${completedClass}">
                     <p class="render-task__title">${name}</p>
                     <p class="render-task__date">${dueDate}</p>
                 </div>
@@ -91,6 +106,7 @@ function render() {
     }
 
     renderOnWebpage.innerHTML = taskListHtml;
+    attachEvents();
 }
 
 function deleteTask(index){
@@ -108,3 +124,25 @@ dateInput.addEventListener('input', function(){
 })
 
  render();
+
+function attachEvents() {
+    const checkbox = document.querySelectorAll('.render-task__checkbox');
+    for (let i = 0; i < checkbox.length; i++) {
+        let eachCheckBox = checkbox[i];
+
+        eachCheckBox.addEventListener('change', function(){
+            const index = this.dataset.index;
+
+            if(this.checked === true){
+                taskLists[index].complete = true;
+            }
+
+            else{
+                taskLists[index].complete = false;
+            }
+
+            saveTasks();
+            render();
+        })
+    }
+}
