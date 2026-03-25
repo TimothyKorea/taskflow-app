@@ -50,7 +50,7 @@ addBtn.addEventListener('click', function(){
     taskLists.push({
         name: taskInput.value,
         dueDate: dateInput.value,
-        complete: false
+        completed: false
     })
 
     saveTasks();
@@ -69,40 +69,63 @@ function saveTasks(){
 function render() {
     let taskListHtml = '';
 
+    const today = new Date().toISOString().split('T')[0];
+
     for(let i = 0; i < taskLists.length; i++) {
         let eachTask = taskLists[i];
-        const {name, dueDate} = eachTask;
+        const {name, dueDate, completed} = eachTask;
+
+        let shouldShowTask = false;
+
+        if(currentFilter === 'all'){
+            shouldShowTask = true;
+        }
+
+        else if(currentFilter === 'today'){
+            if(dueDate === today){
+                shouldShowTask = true;
+            }
+        }
+
+        else if(currentFilter === 'completed'){
+            if(completed === true){
+                shouldShowTask = true;
+            }
+        }
 
         let completedClass = '';
 
-        if(eachTask.complete === true) {
-            completedClass = 'render-task__task-completed';
-        }
+        if (shouldShowTask === true){
+            if(completed === true) {
+                completedClass = 'render-task__task-completed';
+            }
 
-        // my checkbox state
-        let isChecked = '';
+            // my checkbox state
+            let isChecked = '';
 
-        if(eachTask.complete === true) {
-            isChecked = 'checked';
-        }
+            if(completed === true) {
+                isChecked = 'checked';
+            }
 
-        const html = `
-        <div class="render-task__dflex">
-            <div class="render-task__content">
-                <input type="checkbox" class="render-task__checkbox" data-index="${i}" ${isChecked}>
+            const html = `
+            <div class="render-task__dflex">
+                <div class="render-task__content">
+                    <input type="checkbox" class="render-task__checkbox" data-index="${i}" ${isChecked}>
 
-                <div class="render-task__text ${completedClass}">
-                    <p class="render-task__title">${name}</p>
-                    <p class="render-task__date">${dueDate}</p>
+                    <div class="render-task__text ${completedClass}">
+                        <p class="render-task__title">${name}</p>
+                        <p class="render-task__date">${dueDate}</p>
+                    </div>
                 </div>
-            </div>
 
-            <button class="render-task__delete-btn" onclick="deleteTask(${i})">
-             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" cursor="pointer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M5 6l1 14h12l1-14"/></svg>
-            </button> 
-        </div>
-        `;
-        taskListHtml += html;
+                <button class="render-task__delete-btn" onclick="deleteTask(${i})">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" cursor="pointer" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M10 11v6"/><path d="M14 11v6"/><path d="M5 6l1 14h12l1-14"/></svg>
+                </button> 
+            </div>
+            `;
+
+            taskListHtml += html;
+        }    
     }
 
     renderOnWebpage.innerHTML = taskListHtml;
@@ -123,6 +146,20 @@ dateInput.addEventListener('input', function(){
     datejsErrorMessage.textContent = "";
 })
 
+const filterBtns = document.querySelectorAll('.side-bar__filter-btn');
+
+let currentFilter = 'all';
+
+for(let i = 0; i < filterBtns.length; i++) {
+   let eachFilterBtn = filterBtns[i];
+
+    eachFilterBtn.addEventListener('click', function(){
+        currentFilter = this.dataset.filter;
+        render();
+    })
+
+}
+
  render();
 
 function attachEvents() {
@@ -134,11 +171,11 @@ function attachEvents() {
             const index = this.dataset.index;
 
             if(this.checked === true){
-                taskLists[index].complete = true;
+                taskLists[index].completed = true;
             }
 
             else{
-                taskLists[index].complete = false;
+                taskLists[index].completed = false;
             }
 
             saveTasks();
@@ -146,3 +183,4 @@ function attachEvents() {
         })
     }
 }
+
