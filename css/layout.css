@@ -3,6 +3,12 @@
     margin:auto;
 }
 
+/* app layout */
+.app-layout{
+    max-width:1300px;
+    margin:0 auto;
+}
+
 /* side bar */
 .side-bar{
     display:none;
@@ -24,13 +30,26 @@
     gap:.8rem;
 }
 
+.main-content__task-group,
+.main-content__date-group{
+    display:flex;
+    flex-direction:column;
+    gap:.5rem;
+}
+
 .main-content__input-btn-row{
     display:flex; 
-    gap:.4rem;
+    align-items:flex-start;
+    gap:.75rem;
 }
 
 .main-content__date-group{
     flex:1 1 auto;
+}
+
+.main-content__task-entry,
+.render-task{
+    max-width:800px;
 }
 
 .render-task{

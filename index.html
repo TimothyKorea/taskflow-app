@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/components.css">
     <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/media.css">
+
 
     <!-- scripts -->
     <script defer src="js/app.js"></script>
@@ -24,63 +26,66 @@
 </head>
 
 <body>
-    <aside class="side-bar">
-        <div class="side-bar__brand-area">
-            <h2 class="side-bar__title">Filters</h2>
-            <svg class="sidebar-close-icon" width="24" height="24" cursor="pointer" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6 6L18 18" stroke="#111111" stroke-width="1.8" stroke-linecap="round"/><path d="M18 6L6 18" stroke="#111111" stroke-width="1.8" stroke-linecap="round"/></svg>
-        </div>
-        <ul class="side-bar__filters" aria-label="Tasks Filter">
-            <li class="side-bar__filter-list">
-                <button type="button" class="side-bar__filter-btn" data-filter="all">
-                    <svg width="24" height="24" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg"><g transform="translate(-40, 0)"><line x1="72" y1="80" x2="184" y2="80" stroke="#0D1630" stroke-width="16" stroke-linecap="round"/><line x1="72" y1="128" x2="184" y2="128" stroke="#0D1630" stroke-width="16" stroke-linecap="round"/><line x1="72" y1="176" x2="184" y2="176" stroke="#0D1630" stroke-width="16" stroke-linecap="round"/></g></svg>
-                    <span class="side-bar__filter-text">All Tasks</span>
+    <div class="app-layout">
+        <aside class="side-bar">
+            <div class="side-bar__filter-area">
+                <h2 class="side-bar__title">Filters</h2>
+                <svg class="sidebar-close-icon" width="24" height="24" cursor="pointer" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6 6L18 18" stroke="#111111" stroke-width="1.8" stroke-linecap="round"/><path d="M18 6L6 18" stroke="#111111" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <ul class="side-bar__filters" aria-label="Tasks Filter">
+                <li class="side-bar__filter-list">
+                    <button type="button" class="side-bar__filter-btn" data-filter="all">
+                        <svg width="24" height="24" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg"><g transform="translate(-40, 0)"><line x1="72" y1="80" x2="184" y2="80" stroke="#0D1630" stroke-width="16" stroke-linecap="round"/><line x1="72" y1="128" x2="184" y2="128" stroke="#0D1630" stroke-width="16" stroke-linecap="round"/><line x1="72" y1="176" x2="184" y2="176" stroke="#0D1630" stroke-width="16" stroke-linecap="round"/></g></svg>
+                        <span class="side-bar__filter-text">All Tasks</span>
+                    </button>
+                </li>
+                <li class="side-bar__filter-list">
+                    <button type="button" class="side-bar__filter-btn" data-filter="today">
+                        <svg width="24" height="24" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg"><g transform="translate(-33, 0)"><rect x="40" y="56" width="176" height="160" rx="28" stroke="#0D1630" stroke-width="16"/><line x1="40" y1="96" x2="216" y2="96" stroke="#0D1630" stroke-width="16"/><line x1="96" y1="32" x2="96" y2="72" stroke="#0D1630" stroke-width="16" stroke-linecap="round"/><line x1="160" y1="32" x2="160" y2="72" stroke="#0D1630" stroke-width="16" stroke-linecap="round"/><circle cx="128" cy="152" r="20" stroke="#0D1630" stroke-width="16"/></g></svg>
+                        <span class="side-bar__filter-text">Today</span>
+                    </button>
+                </li>
+                <li class="side-bar__filter-list">
+                    <button type="button" class="side-bar__filter-btn" data-filter="completed">
+                        <svg width="24" height="24" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg"><g transform="translate(-35, 0)"><circle cx="128" cy="128" r="84" stroke="#0D1630" stroke-width="16"/><path d="M96 128L120 152L168 104" stroke="#0D1630" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/></g></svg>
+                        <span class="side-bar__filter-text">Completed</span>
+                    </button>
+                </li>
+            </ul>
+        </aside>
+
+
+        <main class="main-content container">
+            <div class="main-content__topbar">
+                <h1 class="main-content__topbar-text">Task<span class="main-content__brand-accent">Flow</span></h1>
+
+                <button type="button" class="main-content__mobile-filter">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4 6H20" stroke="#111111" stroke-width="1.8" stroke-linecap="round"/><circle cx="9" cy="6" r="2" fill="white" stroke="#111111" stroke-width="1.8"/><path d="M4 12H20" stroke="#111111" stroke-width="1.8" stroke-linecap="round"/><circle cx="15" cy="12" r="2" fill="white" stroke="#111111" stroke-width="1.8"/><path d="M4 18H20" stroke="#111111" stroke-width="1.8" stroke-linecap="round"/><circle cx="11" cy="18" r="2" fill="white" stroke="#111111" stroke-width="1.8"/></svg>
+                    <span class="main-content__filter-text">Filter</span>
                 </button>
-            </li>
-            <li class="side-bar__filter-list">
-                <button type="button" class="side-bar__filter-btn" data-filter="today">
-                    <svg width="24" height="24" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg"><g transform="translate(-33, 0)"><rect x="40" y="56" width="176" height="160" rx="28" stroke="#0D1630" stroke-width="16"/><line x1="40" y1="96" x2="216" y2="96" stroke="#0D1630" stroke-width="16"/><line x1="96" y1="32" x2="96" y2="72" stroke="#0D1630" stroke-width="16" stroke-linecap="round"/><line x1="160" y1="32" x2="160" y2="72" stroke="#0D1630" stroke-width="16" stroke-linecap="round"/><circle cx="128" cy="152" r="20" stroke="#0D1630" stroke-width="16"/></g></svg>
-                    <span class="side-bar__filter-text">Today</span>
-                </button>
-            </li>
-            <li class="side-bar__filter-list">
-                <button type="button" class="side-bar__filter-btn" data-filter="completed">
-                    <svg width="24" height="24" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg"><g transform="translate(-35, 0)"><circle cx="128" cy="128" r="84" stroke="#0D1630" stroke-width="16"/><path d="M96 128L120 152L168 104" stroke="#0D1630" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/></g></svg>
-                    <span class="side-bar__filter-text">Completed</span>
-                </button>
-            </li>
-        </ul>
-    </aside>
-
-
-    <main class="main-content container">
-        <div class="main-content__topbar">
-            <h1 class="main-content__topbar-text">Task<span class="main-content__brand-accent">Flow</span></h1>
-
-            <button type="button" class="main-content__mobile-filter">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M4 6H20" stroke="#111111" stroke-width="1.8" stroke-linecap="round"/><circle cx="9" cy="6" r="2" fill="white" stroke="#111111" stroke-width="1.8"/><path d="M4 12H20" stroke="#111111" stroke-width="1.8" stroke-linecap="round"/><circle cx="15" cy="12" r="2" fill="white" stroke="#111111" stroke-width="1.8"/><path d="M4 18H20" stroke="#111111" stroke-width="1.8" stroke-linecap="round"/><circle cx="11" cy="18" r="2" fill="white" stroke="#111111" stroke-width="1.8"/></svg>
-                <span class="main-content__filter-text">Filter</span>
-            </button>
-        </div>
-
-        <form class="main-content__task-entry">
-            <div class="main-content__task-group">
-                <label for="task-name" class="sr-only">Add a new task</label>
-                <input class="main-content__task-input" type="text" placeholder="Add a new task..." id="task-name" minlength="3">
             </div>
 
-            <p class="main-content__task-error-msg"></p>
-
-            <div class="main-content__input-btn-row">
-                <div class="main-content__date-group">
-                    <label for="date" class="sr-only">Pick a date</label>
-                    <input class="main-content__date-input" type="date" id="date">
+            <form class="main-content__task-entry">
+                <div class="main-content__task-group">
+                    <label for="task-name" class="sr-only">Add a new task</label>
+                    <input class="main-content__task-input" type="text" placeholder="Add a new task..." id="task-name" minlength="3">
+                    <p class="main-content__task-error-msg"></p>
                 </div>
-                <button class="main-content__add-btn" type="button">Add</button>
-            </div>
-            <p class="main-content__date-error-msg"></p>
-        </form> 
-        
-        <div class="render-task"></div>
-    </main>
+               
+
+                <div class="main-content__input-btn-row">
+                    <div class="main-content__date-group">
+                        <label for="date" class="sr-only">Pick a date</label>
+                        <input class="main-content__date-input" type="date" id="date">
+                        <p class="main-content__date-error-msg"></p>
+                    </div>
+                    <button class="main-content__add-btn" type="button">Add</button>
+                </div>
+                
+            </form> 
+            
+            <div class="render-task"></div>
+        </main>
+    </div>   
 </body>
 </html>
